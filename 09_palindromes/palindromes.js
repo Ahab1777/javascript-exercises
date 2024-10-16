@@ -16,16 +16,30 @@ const palindromes = function (word) {
   }
 
   const wordToArray = [...word];
-  const onlyLettersArray = '';
-  const palindrome = '';
+  const palindrome = [];
 
   //convert everything to lower case
-  wordToArray = wordToArray.map(item => item.toLowerCase())
+  const lowerCaseArray = wordToArray.map(item => item.toLowerCase())
 
-  for (let i = 0 ; i < wordToArray.length ; i++) {
+  //remove non-letters
+  const onlyLettersArray = lowerCaseArray.filter(isItALetter)
+  //console.log(onlyLettersArray)
+  //reverse the string
+  let reversedWord = [...onlyLettersArray]
+  reversedWord.reverse()
+  //console.log(`only letters = ${onlyLettersArray}`)
+  //console.log(`reversedWord post reverse = ${reversedWord}`)
+  console.log(onlyLettersArray)
+  console.log(reversedWord)
 
+  for (let i = 0 ; i < onlyLettersArray.length ; i++) {
+    if (onlyLettersArray[i] !== reversedWord[i]) {
+      return false
+    }
   }
 };
+
+//palindromes('racecar');
 
 // Do not edit below this line
 module.exports = palindromes;
